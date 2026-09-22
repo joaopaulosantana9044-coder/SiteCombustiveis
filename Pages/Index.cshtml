@@ -1,0 +1,108 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Consultas";
+}
+
+<h1>Preços de Combustíveis</h1>
+
+<h2 id="extremos">Menor e Maior Preço por Combustível</h2>
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Posto</th><th>Endereço</th><th>Bairro</th><th>Combustível</th>
+            <th>Menor Preço (R$)</th><th>Maior Preço (R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Extremos)
+        {
+            <tr>
+                <td>@item.Posto</td><td>@item.Endereco</td><td>@item.Bairro</td><td>@item.Combustivel</td>
+                <td>@item.MenorPreco.ToString("F2")</td><td>@item.MaiorPreco.ToString("F2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h2 id="medios">Preço Médio e Quantidade de Amostras</h2>
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Posto</th><th>Bairro</th><th>Combustível</th>
+            <th>Preço Médio (R$)</th><th>Qtd. Amostras</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Medios)
+        {
+            <tr>
+                <td>@item.Posto</td><td>@item.Bairro</td><td>@item.Combustivel</td>
+                <td>@item.Valor.ToString("F3")</td><td>@item.QuantidadeAmostras</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h2 id="recentes">Preços Mais Recentes</h2>
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Posto</th><th>Bairro</th><th>Combustível</th><th>Preço (R$)</th><th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Recentes)
+        {
+            <tr>
+                <td>@item.NomePosto</td><td>@item.Bairro</td><td>@item.TipoCombustivel</td>
+                <td>@item.Valor.ToString("F2")</td><td>@item.DataColeta.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h2 id="evolucao">Evolução do Preço ao Longo do Tempo</h2>
+<form method="get">
+    <label>Posto:</label>
+    <select name="idPosto">
+        @foreach (var posto in Model.Postos)
+        {
+            <option value="@posto.IdPosto">@posto.Nome (@posto.Bairro)</option>
+        }
+    </select>
+
+    <label>Combustível:</label>
+    <select name="idCombustivel">
+        @foreach (var combustivel in Model.Combustiveis)
+        {
+            <option value="@combustivel.IdCombustivel">@combustivel.Tipo</option>
+        }
+    </select>
+
+    <button type="submit">Consultar</button>
+</form>
+
+@if (Model.Evolucao.Any())
+{
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr><th>Posto</th><th>Bairro</th><th>Combustível</th><th>Preço (R$)</th><th>Data</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Evolucao)
+            {
+                <tr>
+                    <td>@item.NomePosto</td><td>@item.Bairro</td><td>@item.TipoCombustivel</td>
+                    <td>@item.Valor.ToString("F2")</td><td>@item.DataColeta.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

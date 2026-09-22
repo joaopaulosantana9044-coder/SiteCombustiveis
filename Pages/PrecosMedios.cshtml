@@ -1,0 +1,30 @@
+@page
+@model SiteCombustiveis.Pages.PrecosMediosModel
+@{
+    ViewData["Title"] = "Preço Médio";
+}
+<h1>Preço Médio e Quantidade de Amostras</h1>
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Posto</th>
+            <th>Bairro</th>
+            <th>Combustível</th>
+            <th>Preço Médio (R$)</th>
+            <th>Qtd. Amostras</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Precos)
+        {
+            <tr>
+                <td>@item.Posto</td>
+                <td>@item.Bairro</td>
+                <td>@item.Combustivel</td>
+                <td>@item.Valor.ToString("F3")</td>
+                <td>@item.QuantidadeAmostras</td>
+            </tr>
+        }
+    </tbody>
+</table>

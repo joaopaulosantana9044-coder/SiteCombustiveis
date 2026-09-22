@@ -1,0 +1,31 @@
+@page
+@model SiteCombustiveis.Pages.PrecosRecentesModel
+@{
+    ViewData["Title"] = "Preços Mais Recentes";
+}
+
+<h1>Preços Mais Recentes por Posto e Combustível</h1>
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Posto</th>
+            <th>Bairro</th>
+            <th>Combustível</th>
+            <th>Preço (R$)</th>
+            <th>Data da Coleta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Coletas)
+        {
+            <tr>
+                <td>@item.NomePosto</td>
+                <td>@item.Bairro</td>
+                <td>@item.TipoCombustivel</td>
+                <td>@item.Valor.ToString("F2")</td>
+                <td>@item.DataColeta.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>

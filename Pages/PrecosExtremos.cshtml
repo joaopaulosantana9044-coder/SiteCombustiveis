@@ -1,0 +1,33 @@
+@page
+@model SiteCombustiveis.Pages.PrecosExtremosModel
+@{
+    ViewData["Title"] = "Menor e Maior Preço";
+}
+
+<h1>Menor e Maior Preço por Combustível</h1>
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Posto</th>
+            <th>Endereço</th>
+            <th>Bairro</th>
+            <th>Combustível</th>
+            <th>Menor Preço (R$)</th>
+            <th>Maior Preço (R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Precos)
+        {
+            <tr>
+                <td>@item.Posto</td>
+                <td>@item.Endereco</td>
+                <td>@item.Bairro</td>
+                <td>@item.Combustivel</td>
+                <td>@item.MenorPreco.ToString("F2")</td>
+                <td>@item.MaiorPreco.ToString("F2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
