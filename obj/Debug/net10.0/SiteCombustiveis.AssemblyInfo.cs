@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SiteCombustiveis")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e69b28e96a4ad8d14a32fe90d7d37e37daa19540")]
 [assembly: System.Reflection.AssemblyProductAttribute("SiteCombustiveis")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SiteCombustiveis")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
